@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>GifTastic</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="cars-view"></div>
+
+                <form id="car-form">
+                    <label for="car-input">Add a Car!</label>
+                    <input type="text" id="car-input"><br>
+
+                    <input class="btn btn-primary" id="add-car" type="submit" value="Add a car!">
+
+                </form>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div id="gifs-appear-here">
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+
+            var cars = ["Ferrari F40", "Mclaren F1", "Koenigsegg", "Lexus LFA", "Ford GT"];
+
+            function renderButtons() {
+
+                $("#cars-view").empty();
+
+                for (var i = 0; i < cars.length; i++) {
+
+                    var a = $("<button>");
+
+                    a.addClass("btn btn-success");
+
+                    a.addClass("car");
+
+                    a.attr("data-car", cars[i]);
+
+                    a.text(cars[i]);
+
+                    $("#cars-view").append(a);
+                }
+                $("button").on("click", function () {
+
+                    var car = $(this).attr("data-car");
+
+                    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+                        car + "&api_key=eUvmFhuyCOFmLb8fl2Og9K8sTI2XlH2f&limit=10&offset=0&rating=G&lang=en";
+
+                    $.ajax({
+                        url: queryURL,
+                        method: "GET"
+                    })
+
+                        .then(function (response) {
+
+                            var results = response.data;
+
+                            for (var i = 0; i < results.length; i++) {
+
+                                if (results[i].rating !== "r" && results[i].rating !== "pg-13") {
+
+                                    var gifDiv = $("<div>");
+
+                                    var rating = results[i].rating;
+
+                                    var p = $("<p>").text("Rating: " + rating);
+
+                                    var carImage = $('<img class= "gif" src= "' + results[i].images.fixed_height_still.url + '" data-still="' + results[i].images.fixed_height_still.url + '" data-animate="' + results[i].images.fixed_height.url + '" data-state="still">');
+
+                                    gifDiv.append(p);
+                                    gifDiv.append(carImage);
+
+                                    $("#gifs-appear-here").prepend(gifDiv);
+                                }
+                            }
+
+                            $(".gif").on("click", function () {
+
+                                var state = $(this).attr("data-state");
+
+                                if (state === "still") {
+                                    $(this).attr("src", $(this).attr("data-animate"));
+                                    $(this).attr("data-state", "animate");
+                                } else {
+                                    $(this).attr("src", $(this).attr("data-still"));
+                                    $(this).attr("data-state", "still");
+                                }
+                            });
+                        });
+                });
+            }
+
+            $("#add-car").on("click", function (event) {
+
+                event.preventDefault();
+
+                var car = $("#car-input").val().trim();
+
+                cars.push(car);
+
+                renderButtons();
+            });
+
+            renderButtons();
+
+        </script>
+    </div>
+</body>
+
+</html>
