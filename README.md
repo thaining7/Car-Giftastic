@@ -5,7 +5,7 @@ https://thaining7.github.io/Car-Giftastic/
 
 # Description
 
-#### This application features , JavaScript, jQuery and the Giphy API to find find and display animated Gifs
+#### This application uses JavaScript, jQuery and the Giphy API to find find and display animated Gifs
 
 # Screenshot
 
