@@ -9,6 +9,8 @@ https://thaining7.github.io/Car-Giftastic/
 
 # Screenshot
 
+![App Screenshot](/assets/images/Giftastic.png)
+
 # Tech Used
 
 * JavaScript
