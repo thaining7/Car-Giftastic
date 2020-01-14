@@ -66,5 +66,5 @@ https://developers.giphy.com/
 
 * Simply type your desired car in the search box and click the "add a car" button
 * Then, your car will appear on a button at the top of the page
-* Click your cars button to load gifs from the Gihpy API
+* Click your cars button to load gifs from the Giphy API
 * Click on the images to start and stop the Gifs animation
