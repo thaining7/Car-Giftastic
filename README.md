@@ -27,7 +27,7 @@ Uses the Giphy API to display images with a rating of "G"
 
 ## Code Example
 
-Ajax call and JS used to query the API
+Ajax call and JS used to query the API and jQuery used for DOM manipulation:
 
 ```
 $.ajax({
