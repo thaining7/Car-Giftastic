@@ -1,17 +1,18 @@
 # Car Giftastic
 
-#### Search for animated gifs of your favorite cars!
+Search for animated gifs of your favorite cars!
+
 https://thaining7.github.io/Car-Giftastic/
 
-# Description
+## Description
 
-#### This application uses JavaScript, jQuery and the Giphy API to find find and display animated Gifs
+This application uses JavaScript, jQuery and the Giphy API to find find and display animated Gifs
 
-# Screenshot
+## Screenshot
 
 ![App Screenshot](/assets/images/Giftastic.png)
 
-# Tech Used
+## Tech Used
 
 * JavaScript
 * jQuery
@@ -20,13 +21,13 @@ https://thaining7.github.io/Car-Giftastic/
 * CSS
 * Bootstrap CSS Framework
 
-# Features
+## Features
 
-#### Uses the Giphy API to display images with a rating of "G"
+Uses the Giphy API to display images with a rating of "G"
 
-# Code Example
+## Code Example
 
-#### Ajax call and JS used to query the API
+Ajax call and JS used to query the API
 
 ```
 $.ajax({
@@ -58,11 +59,11 @@ $.ajax({
                         }
 ```
 
-# API Reference
+## API Reference
 
 https://developers.giphy.com/
 
-# How To Use
+## How To Use
 
 * Simply type your desired car in the search box and click the "add a car" button
 * Then, your car will appear on a button at the top of the page
